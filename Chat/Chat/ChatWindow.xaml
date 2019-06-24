@@ -8,11 +8,11 @@
         Title="ChatWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="171*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="619*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="617*"/>
         </Grid.ColumnDefinitions>
-        <ListView HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="171">
+        <ListView x:Name="UserListView" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="174" Margin="1,1,0,0" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
