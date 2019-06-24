@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +25,27 @@ namespace Chat
         public ChatWindow()
         {
             InitializeComponent();
+            string strConn = ConfigurationManager.ConnectionStrings["SomeeConnection"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(strConn))
+            {
+                con.Open();
+                string q = "SELECT Name From tblUsers";
+                DataSet dataSet = new DataSet();
+                SqlCommand cmd = new SqlCommand(q, con);
+               SqlDataReader reader = cmd.ExecuteReader();
+                int i = 1;
+                while (reader.Read())
+                {
+                    string item;
+                  item= (i.ToString());
+                    item += ". ";
+
+                    item += reader["Name"].ToString();                                       
+                    i++;
+                UserListView.Items.Add(item);
+                }
+                con.Close();
+            }
         }
     }
 }
